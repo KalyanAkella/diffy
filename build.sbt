@@ -1,5 +1,4 @@
 import scala.language.reflectiveCalls
-import scoverage.ScoverageKeys
 
 concurrentRestrictions in Global += Tags.limit(Tags.Test, 1)
 
@@ -119,6 +118,7 @@ lazy val baseSettings = Seq(
   libraryDependencies ++= scroogeDependencies,
   libraryDependencies ++= testDependencies,
   libraryDependencies ++= Seq(
+    "org.slf4j" % "slf4j-simple" % versions.slf4j,
     "javax.mail" % "mail" % "1.4.7",
     "org.jsoup" % "jsoup" % "1.7.2",
     "org.scala-lang" % "scala-compiler" % scalaVersion.value
