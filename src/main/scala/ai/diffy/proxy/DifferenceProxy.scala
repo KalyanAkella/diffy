@@ -96,7 +96,10 @@ trait DifferenceProxy {
           }
       } respond { _ => outstandingRequests.decrementAndGet }
 
-      NoResponseExceptionFuture
+      rawResponses flatMap { rs =>
+        Future.value(rs.head.apply())
+      }
+//      NoResponseExceptionFuture
     }
   }
 
